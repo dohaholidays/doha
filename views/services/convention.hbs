@@ -1,0 +1,741 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Doha Holidays</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/img/logo.png">
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/css/tiny-slider.css" rel="stylesheet" />
+    <link href="/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" rel="stylesheet">
+    <!-- Main css -->
+    <link href="/css/style-dark.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="/css/colors/default.css" rel="stylesheet" id="color-opt">
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+    
+</head>
+<style>
+    .portfolio-menu{
+text-align:center;
+}
+.portfolio-menu ul li{
+display:inline-block;
+margin:0;
+list-style:none;
+padding:10px 15px;
+cursor:pointer;
+-webkit-transition:all 05s ease;
+-moz-transition:all 05s ease;
+-ms-transition:all 05s ease;
+-o-transition:all 05s ease;
+transition:all .5s ease;
+}
+
+
+.portfolio-item .item{
+/*width:303px;*/
+float:left;
+margin-bottom:10px;
+}
+.breadcrumb {
+display: -ms-flexbox;
+display: contents;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+padding: 0.75rem 1rem;
+margin-bottom: 1rem;
+list-style: none;
+background-color: #e9ecef00;
+border-radius: 0.25rem;
+}
+.poss {
+left: 34px;
+
+}
+
+
+</style>
+
+<body>
+    <!-- Loader -->
+    <!-- <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Loader -->
+
+    <!-- Navbar STart -->
+    <header id="topnav" class="defaultscroll sticky">
+        <div class="container">
+            <!-- Logo Start-->
+            <a class="logo" href="">
+                <span class="logo-light-mode">
+                    <!-- <img src="/images/logo-dark.png" height="26" class="l-dark" alt="">
+                    <img src="/images/logo-white.png" height="26" class="l-light" alt=""> -->
+                </span>
+                <img src="/img/logo.png" height="66" class="logo-dark-mode" alt="">
+            </a>
+            <!-- Logo end-->
+
+            <!-- Mobile -->
+            <div class="menu-extras">
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
+            <!-- Mobile -->
+
+            <!--Login button Start-->
+            <ul class="buy-button list-inline mb-0">
+                <li class="list-inline-item mb-0">
+                    <div class="dropdown">
+                        <!-- <button type="button" class="btn dropdown-toggle p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="uil uil-search text-white title-dark btn-icon-light fs-5 align-middle"></i>
+                            <i class="uil uil-search text-dark btn-icon-dark fs-5 align-middle"></i>
+                        </button> -->
+                        <!-- <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 p-0" style="width: 300px;"> -->
+                            <!-- <div class="search-bar">
+                                <div id="itemSearch" class="menu-search mb-0">
+                                    <form role="search" method="get" id="searchItemform" class="searchform">
+                                        <input type="text" class="form-control border rounded shadow" name="s" id="s" placeholder="Search...">
+                                        <input type="submit" id="searchItemsubmit" value="Search">
+                                    </form>
+                                </div>
+                            </div> -->
+                        <!-- </div> -->
+                    </div>
+                </li>
+
+                <!-- <li class="list-inline-item ms-1 mb-0">
+                    <a id="connectWallet">
+                        <span class="btn-icon-dark"><span class="btn btn-icon btn-pills btn-primary"><i class="uil uil-wallet fs-6"></i></span></span>
+                        <span class="btn-icon-light"><span class="btn btn-icon btn-pills btn-light"><i class="uil uil-wallet fs-6"></i></span></span>
+                    </a>
+                </li> -->
+
+                <!--------Profile---------->
+               <li class="list-inline-item mb-0 ms-1">
+                        <div class="dropdown dropdown-primary">
+                            <button type="button" class="btn btn-pills dropdown-toggle p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/img/profile.png" class="rounded-pill avatar avatar-sm-sm" alt=""></button>
+                            <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 pb-3 pt-0 overflow-hidden rounded" style="min-width: 200px;">
+                                <div class="position-relative">
+                                    <div class="pt-5 pb-3 bg-gradient-primary"></div>
+                                    <div class="px-3">
+                                        <div class="d-flex align-items-end mt-n4">
+                                            <img src="/img/profile.png" class="rounded-pill avatar avatar-md-sm img-thumbnail shadow-md" alt="">
+                                            <h6 class="text-dark fw-bold mb-0 ms-1"></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                           {{#if user}}
+
+                                            <div class="mt-2">
+                                            <div class="dropdown-divider border-top"></div>
+                                            <a class="dropdown-item small fw-semibold text-dark d-flex align-items-center" href="/"><span class="mb-0 d-inline-block me-1"><i class="uil uil-user align-middle h6 mb-0 me-1"></i></span>{{user.Name}}</a>
+                                            <div class="dropdown-divider border-top"></div>
+                                            <a class="dropdown-item small fw-semibold text-dark d-flex align-items-center" href="/signout"><span class="mb-0 d-inline-block me-1"><i class="uil uil-sign-out-alt align-middle h6 mb-0 me-1"></i></span> Logout</a>
+                                        </div>
+
+                {{else}}
+
+                                    
+                                        <div class="mt-2">
+                                            <div class="dropdown-divider border-top"></div>
+                                            <a class="dropdown-item small fw-semibold text-dark d-flex align-items-center" href="/signin"><span class="mb-0 d-inline-block me-1"><i class="uil uil-sign-out-alt align-middle h6 mb-0 me-1"></i></span> Login</a>
+                                            <div class="dropdown-divider border-top"></div>
+                                            <a class="dropdown-item small fw-semibold text-dark d-flex align-items-center" href="/signup"><span class="mb-0 d-inline-block me-1"><i class="uil uil-sign-out-alt align-middle h6 mb-0 me-1"></i></span> Register</a>
+                                        </div>
+                {{/if}}
+
+
+
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </li>
+            </ul>
+            <!--Login button End-->
+
+            <div id="navigation">
+                <!-- Navigation Menu-->   
+                <ul class="navigation-menu nav-left nav-light">
+                    <li class="has-submenu parent-menu-item">
+                        <a href="/">Home</a>
+                        <!-- <span class="menu-arrow"></span> -->
+                        <!-- <ul class="submenu">
+                            <li><a href="/" class="sub-menu-item">/ One</a></li>
+                            <li><a href="index-two.html" class="sub-menu-item">/ Two</a></li>
+                            <li><a href="index-three.html" class="sub-menu-item">/ Three</a></li>
+                            <li><a href="index-four.html" class="sub-menu-item">/ Four</a></li>
+                            <li><a href="index-dark.html" class="sub-menu-item">/ One Dark</a></li>
+                            <li><a href="index-two-dark.html" class="sub-menu-item">/ Two Dark</a></li>
+                            <li><a href="index-three-dark.html" class="sub-menu-item">/ Three Dark</a></li>
+                            <li><a href="index-four-dark.html" class="sub-menu-item">/ Four Dark</a></li>
+                        </ul> -->
+                    </li>
+                    
+                    <li class="has-submenu parent-parent-menu-item">
+                        <a href="/">About</a>
+                        <!-- <span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li><a href="explore-one.html" class="sub-menu-item"> Explore One</a></li>
+                            <li><a href="explore-two.html" class="sub-menu-item"> Explore Two</a></li>
+                            <li><a href="explore-three.html" class="sub-menu-item"> Explore Three</a></li>
+                            <li><a href="explore-four.html" class="sub-menu-item"> Explore Four</a></li>
+                            <li><a href="auction.html" class="sub-menu-item">Live Auction</a></li>
+                            <li><a href="item-detail-one.html" class="sub-menu-item"> Item Detail One</a></li>
+                            <li><a href="item-detail-two.html" class="sub-menu-item"> Item Detail Two</a></li>
+                        </ul> -->
+                    </li>
+                    
+                    <li><a href="/" class="sub-menu-item">Services</a></li>
+
+                    <li><a href="/" class="sub-menu-item">Gallery</a></li>
+
+                    <li><a href="/" class="sub-menu-item">Contact</a></li>
+
+                    <!-- <li class="has-submenu parent-parent-menu-item">
+                        <a href="javascript:void(0)">Pages</a><span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li><a href="aboutus.html" class="sub-menu-item">About Us</a></li>
+                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Creator </a><span class="submenu-arrow"></span>
+                                <ul class="submenu">
+                                    <li><a href="creators.html" class="sub-menu-item"> Creators</a></li>
+                                    <li><a href="creator-profile.html" class="sub-menu-item"> Creator Profile</a></li>
+                                    <li><a href="creator-profile-edit.html" class="sub-menu-item"> Profile Edit</a></li>
+                                    <li><a href="become-creator.html" class="sub-menu-item"> Become Creator</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="collections.html" class="sub-menu-item">Collections</a></li>
+                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Blog </a><span class="submenu-arrow"></span>
+                                <ul class="submenu">
+                                    <li><a href="blogs.html" class="sub-menu-item"> Blogs</a></li>
+                                    <li><a href="blog-sidebar.html" class="sub-menu-item"> Blog with sidebar</a></li>
+                                    <li><a href="blog-detail.html" class="sub-menu-item"> Blog Detail</a></li>
+                                </ul> 
+                            </li>
+                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Auth Pages </a><span class="submenu-arrow"></span>
+                                <ul class="submenu">
+                                    <li><a href="login.html" class="sub-menu-item"> Login</a></li>
+                                    <li><a href="signup.html" class="sub-menu-item"> Signup</a></li>
+                                    <li><a href="reset-password.html" class="sub-menu-item"> Forgot Password</a></li>
+                                    <li><a href="lock-screen.html" class="sub-menu-item"> Lock Screen</a></li>
+                                </ul> 
+                            </li>
+                            <li><a href="faqs.html" class="sub-menu-item">FAQs</a></li>
+                            <li><a href="terms.html" class="sub-menu-item">Terms Policy</a></li>
+                            <li><a href="privacy.html" class="sub-menu-item">Privacy Policy</a></li>
+                            <li><a href="upload-work.html" class="sub-menu-item">Upload Works</a></li>
+                        </ul>
+                    </li> -->
+                </ul><!--end navigation menu-->
+            </div><!--end navigation-->
+        </div><!--end container-->
+    </header><!--end header-->
+    <!-- Navbar End -->
+
+
+
+
+
+ <!-- Start Home -->
+ <section class="bg-half-170 d-table w-100" style="background: url('/img/cn.png')">
+            <div class="bg-overlay bg-gradient-overlay-2"></div>
+            <div class="container">
+                <div class="row mt-5 justify-content-center">
+                    <div class="col-12">
+                        <div class="title-heading text-center">
+                            <h5 class="heading fw-semibold sub-heading text-white title-dark">Doha Family Park And Convention Center </h5>
+                            <p class="text-white-50 para-desc mx-auto mb-0">Please check all activities</p>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+
+                <div class="position-middle-bottom">
+                    <nav aria-label="breadcrumb" class="d-block">
+                        <ul class="breadcrumb breadcrumb-muted mb-0 p-0">
+                            <li class="breadcrumb-item"><a href="/">Doha Holidays</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Family Park And Convention Center</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div><!--end container-->
+        </section><!--end section-->
+        <div class="position-relative">            
+            <div class="shape overflow-hidden text-white">
+                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+                </svg>
+            </div>
+        </div>
+        <!-- End Home -->
+
+   <!-- Start -->
+   <section class="bg-item-detail d-table w-100"
+    style="
+    padding: 174px 0 2px;
+    background-size: cover;
+    background-color : white;
+    color : black;
+    align-self: center;
+    position: relative;
+    background-position: center center;"
+    >
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="sticky-bar">
+                            <img src="/img/cn.png" class="img-fluid rounded-md shadow" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
+                        <div class="ms-lg-5">
+                            <div class="title-heading">
+                                <h4 class="h3 fw-bold mb-0">DOHA<span class="text-gradient-primary"><br> FAMILY PARK & CONVENTION CENTRE</span></h4>
+                            </div>
+    
+                            <!-- <div class="row">
+                                <div class="col-md-6 mt-4 pt-2">
+                                    <h6>Current Bid</h6>
+                                    <h4 class="mb-0">4.85 ETH</h4>
+                                    <small class="mb-0 text-muted">$450.48USD</small>
+                                </div>
+    
+                                <div class="col-md-6 mt-4 pt-2">
+                                    <h6>Auction Ending In</h6>
+                                    <h4 id="auction-item-8" class="fw-bold mb-0"></h4>
+                                </div>
+
+                                <div class="col-12 mt-4 pt-2">
+                                    <a href="wallet.html" class="btn btn-l btn-pills btn-primary w-100"><i class="uil uil-shopping-cart-alt fs-5 me-2"></i> Place a Bid</a>
+                                </div>
+                            </div> -->
+
+                            <div class="row mt-4 pt-2">
+                                <div class="col-12">
+                                    <ul class="nav nav-tabs border-bottom justify-content-center" id="myTab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="detail-tab" data-bs-toggle="tab" data-bs-target="#detailItem" type="button" role="tab" aria-controls="detailItem" aria-selected="true">Details</button>
+                                        </li>
+                                        
+                                       
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity" type="button" role="tab" aria-controls="activity" aria-selected="false">Activity</button>
+                                        </li>
+
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="bids-tab" data-bs-toggle="tab" data-bs-target="#bids" type="button" role="tab" aria-controls="bids" aria-selected="false">Gallery</button>
+                                        </li>
+                                    </ul>
+            
+                                    <div class="tab-content mt-4 pt-2" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="detailItem" role="tabpanel" aria-labelledby="detail-tab">
+                                            <p class="">Our family park is quite famous. Evenings here are filled with great ambience and energy which is perfect for spending time with family. This place is full of entertainment for the whole family including children. Here there are may ways for you to feel the beauty according to your age with full safety. Even though there is small form of payment, it has an excellent park facility in the best environment. Here there are many ways for you to enjoy the beauty safely according to your age.</p>
+                                            <!-- <h6>Owner</h6>
+            
+                                            <div class="creators creator-primary d-flex align-items-center">
+                                                <div class="position-relative">
+                                                    <img src="/images/client/09.jpg" class="avatar avatar-md-sm shadow-md rounded-pill" alt="">
+                                                    <span class="verified text-primary">
+                                                        <i class="mdi mdi-check-decagram"></i>
+                                                    </span>
+                                                </div>
+                
+                                                <div class="ms-3">
+                                                    <h6 class="mb-0"><a href="creators.html" class="text-dark name">PandaOne</a></h6>
+                                                </div>
+                                            </div> -->
+                                        </div>
+
+                                        
+                                        <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+                                            <div class="row g-4">
+                                                <div class="col-12">
+                                                    <div class="card activity activity-primary rounded-md shadow p-4 mb-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="position-relative">
+                                                                <img src="/img/cn.png" class="avatar avatar-md-md rounded-md shadow-md" alt="">
+                
+                                                                                                                          </div>
+                                                                
+                                                            <span class="content ms-3">
+                                                                <a href="javascript:void(0)" class="text-dark title mb-0 h6 d-block">Your Project Name</a>
+                                                                <small class="text-muted d-block mt-1">Location : Kerala, India</small>
+                                                                
+                                                                <small class="text-muted d-block mt-1">12/05/2021</small>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div><!--end col--><br>
+<br><br>
+                                                <div class="col-12">
+                                                    <div class="card activity activity-primary rounded-md shadow p-4 mb-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="position-relative">
+                                                                <img src="/img/cn.png" class="avatar avatar-md-md rounded-md shadow-md" alt="">
+                
+                                                                                                                            </div>
+                                                                
+                                                            <span class="content ms-3">
+                                                                <a href="javascript:void(0)" class="text-dark title mb-0 h6 d-block">Your Project Name</a>
+                                                                <small class="text-muted d-block mt-1">Location : Kerala, India</small>
+                                                                
+                                                                <small class="text-muted d-block mt-1">12/05/2021</small>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div><!--end col--><br>
+<br>
+                                                <div class="col-12">
+                                                    <div class="card activity activity-primary rounded-md shadow p-4 mb-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="position-relative">
+                                                                <img src="/img/cn.png" class="avatar avatar-md-md rounded-md shadow-md" alt="">
+                
+                                                                                                                          </div>
+                                                                
+                                                            <span class="content ms-3">
+                                                                <a href="javascript:void(0)" class="text-dark title mb-0 h6 d-block">Your Project Name</a>
+                                                                <small class="text-muted d-block mt-1">Location : Kerala, India</small>
+                                                                
+                                                                <small class="text-muted d-block mt-1">12/05/2021</small>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div><!--end col-->
+                                                
+                                                
+                                            
+                                            </div><!--end row-->
+                                        </div>
+            
+                                        <div class="tab-pane fade" id="bids" role="tabpanel" aria-labelledby="bids-tab">
+                                           
+                                        <div class="container">
+        
+        
+         <div class="portfolio-item row">
+            <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
+               <a href="/img/cn.png" class="fancylight popup-btn" data-fancybox-group="light"> 
+               <img class="img-fluid" src="/img/cn.png" alt="">
+               </a>
+            </div>
+            <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
+               <a href="/img/cn.png" class="fancylight popup-btn" data-fancybox-group="light"> 
+               <img class="img-fluid" src="/img/cn.png" alt="">
+               </a>
+            </div>
+            <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
+               <a href="/img/cn.png" class="fancylight popup-btn" data-fancybox-group="light"> 
+               <img class="img-fluid" src="/img/cn.png" alt="">
+               </a>
+            </div>
+            <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
+               <a href="/img/cn.png" class="fancylight popup-btn" data-fancybox-group="light"> 
+               <img class="img-fluid" src="/img/cn.png" alt="">
+               </a>
+            </div>
+            <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
+               <a href="/img/cn.png" class="fancylight popup-btn" data-fancybox-group="light"> 
+               <img class="img-fluid" src="/img/cn.png" alt="">
+               </a>
+            </div>
+            <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
+               <a href="/img/cn.png" class="fancylight popup-btn" data-fancybox-group="light"> 
+               <img class="img-fluid" src="/img/cn.png" alt="">
+               </a>
+            </div>
+            <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
+               <a href="/img/cn.png" class="fancylight popup-btn" data-fancybox-group="light"> 
+               <img class="img-fluid" src="/img/cn.png" alt="">
+               </a>
+            </div>
+            <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
+               <a href="/img/cn.png" class="fancylight popup-btn" data-fancybox-group="light"> 
+               <img class="img-fluid" src="/img/cn.png" alt="">
+               </a>
+            </div>
+            <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
+               <a href="/img/cn.png" class="fancylight popup-btn" data-fancybox-group="light"> 
+               <img class="img-fluid" src="/img/cn.png" alt="">
+               </a>
+            </div>
+            <div class="item gts col-lg-3 col-md-4 col-6 col-sm">
+               <a href="/img/cn.png" class="fancylight popup-btn" data-fancybox-group="light"> 
+               <img class="img-fluid" src="/img/cn.png" alt="">
+               </a>
+            </div>
+           
+        
+        
+            
+         </div>
+      </div>
+                                            
+            
+                                            
+                                        </div> 
+            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container--><br><br><br>
+
+
+        <!-- Footer Start -->
+        <footer class="bg-footer">
+            <div class="py-5">
+                <div class="container">
+                    <div class="row">
+                        <!-- <div class="col-xl-8 col-lg-7 col-md-6">
+                            <h5 class="text-light fw-normal title-dark">Download the Superex app to explore any NFTs</h5>
+                            
+                            <div class="mt-4">
+                                <a href=""><img src="/images/app.png" height="40" alt=""></a>
+                                <a href="" class="ms-2"><img src="/images/playstore.png" height="40" alt=""></a>
+                            </div>
+                        </div> -->
+<center>
+<div class="poss">
+                        <div class="col-xl-12 col-lg-5 col-md-6 mt-4 mt-sm-0">
+                            <h5 class="text-light fw-normal title-dark">Join DohaHolidays community</h5>
+
+                            <ul class="list-unstyled social-icon foot-social-icon mb-0 mt-4">
+                            <li class="list-inline-item lh-1"><a href="" class="rounded"><i class="uil uil-facebook-f"></i></a></li>
+                                <li class="list-inline-item lh-1"><a href="" class="rounded"><i class="uil uil-instagram"></i></a></li>
+                                                  
+                                <li class="list-inline-item lh-1"><a href="" class="rounded"><i class="uil uil-twitter"></i></a></li>
+                                <li class="list-inline-item lh-1"><a href="" class="rounded"><i class="uil uil-whatsapp"></i></a></li>
+                            </ul>
+                        </div><!--end col-->
+</div>
+                        </center>
+
+                    </div><!--end row-->
+                </div><!--end container-->
+            </div><!--end div-->
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer-py-60 footer-border">
+                            <div class="row">
+                                <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
+                                    <a href="#" class="logo-footer">
+                                        <img src="/img/logo.png" height="76">
+                                    </a>
+                                    <p class="para-desc mb-0 mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                                
+                                    
+                                </div><!--end col-->
+                                
+                                <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                                    <h5 class="footer-head" style="color: white;">Services</h5>
+                                    <ul class="list-unstyled footer-list mt-4">
+                                        <li><a href="explore-two.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Sports Hub</a></li>
+                                        <li><a href="auction.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Tours And Travels</a></li>
+                                        <li><a href="activity.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Convention Center</a></li>
+                                        <li><a href="wallet.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Trading</a></li>
+                                        <li><a href="creators.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Contracting</a></li>
+                                        <li><a href="creators.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Hotels And Resorts</a></li>
+                                    </ul>
+                                </div><!--end col-->
+                                
+                                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                                    <h5 class="footer-head" style="color: white;">Community</h5>
+                                    <ul class="list-unstyled footer-list mt-4">
+                                        <li><a href="#about" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> About Us</a></li>
+                                        <li><a href="#Services" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Services</a></li>
+                                        <li><a href="#Gallery" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Gallery</a></li>
+                                        <li><a href="privacy.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Privacy Policy</a></li>
+                                        <li><a href="login.php" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Login</a></li>
+                            
+                                        <li><a href="#contact" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Contact</a></li>
+                                    </ul>
+                                </div><!--end col-->
+            
+                                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                                    <h5 class="footer-head" style="color: white;">Newsletter</h5>
+                                    <p class="mt-4">Sign up and receive the latest tips via email.</p>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="foot-subscribe mb-3">
+                                                    <label class="form-label">Write your email <span class="text-danger">*</span></label>
+                                                    <div class="form-icon position-relative">
+                                                        <i data-feather="mail" class="fea icon-sm icons"></i>
+                                                        <input type="email" name="email" id="emailsubscribe" class="form-control ps-5 rounded" placeholder="Your email : " required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="d-grid">
+                                                    <input type="submit" id="submitsubscribe" name="send" class="btn btn-soft-primary" value="Subscribe">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div><!--end col-->
+                            </div><!--end row-->
+                        </div>
+                    </div><!--end slide-->
+                </div><!--end row-->
+            </div><!--end container-->
+
+            <div class="footer-py-30 footer-bar">
+                <div class="container text-center">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6">
+                            <div class="text-sm-start">
+                                <p class="mb-0">� <script>document.write(new Date().getFullYear())</script> VectorCrop. Design by <a href="https://vectorcrop.com/" target="_blank" class="text-reset">VectorCrop</a>.</p>
+                            </div>
+                        </div><!--end col-->
+    
+                        <!-- <div class="col-sm-6 mt-4 mt-sm-0 pt-1 pt-sm-0">
+                        <ul class="list-unstyled social-icon foot-social-icon mb-0 mt-4">
+                                <li class="list-inline-item lh-1"><a href="" class="rounded"><i class="uil uil-facebook-f"></i></a></li>
+                                <li class="list-inline-item lh-1"><a href="" class="rounded"><i class="uil uil-instagram"></i></a></li>
+                        
+                               
+                                <li class="list-inline-item lh-1"><a href="" class="rounded"><i class="uil uil-twitter"></i></a></li>
+                                <li class="list-inline-item lh-1"><a href="" class="rounded"><i class="uil uil-whatsapp"></i></a></li>
+                            </ul>
+                        </div> -->
+                        <!--end col-->
+                    </div><!--end row-->
+                </div><!--end container-->
+            </div>
+        </footer><!--end footer-->
+        <!-- Footer End -->
+
+        <!-- Back to top -->
+        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top rounded-pill fs-5"><i data-feather="arrow-up" class="fea icon-sm icons align-middle"></i></a>
+        <!-- Back to top -->
+
+        <!-- Wallet Modal -->
+        <!-- <div class="modal fade" id="modal-metamask" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm">                    
+                <div class="modal-content justify-content-center border-0 shadow rounded-md position-relative">
+                    <div class="position-absolute top-0 start-100 translate-middle z-index-1">
+                        <button type="button" class="btn btn-icon btn-pills btn-sm btn-light btn-close opacity-10" data-bs-dismiss="modal" id="close-modal"><i class="uil uil-times fs-4"></i></button>
+                    </div>
+
+                    <div class="modal-body p-4 text-center">
+                        <img src="/images/wallet/MetaMask_Fox.svg" class="avatar avatar-md-md rounded-circle shadow-sm " alt="">
+
+                        <div class="content mt-4">
+                            <h5 class="text-danger mb-4">Error!</h5>
+
+                            <P class="text-muted">Please Download MetaMask and create your profile and wallet in MetaMask. Please click and check the details,</P>
+
+                            <a href="https://metamask.io/" class="btn btn-link primary text-primary fw-bold" target="_blank">MetaMask</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Wallet Modal -->
+
+        <!-- Style switcher -->
+        <!-- <div id="style-switcher" class="bg-light border p-3 pt-2 pb-2" onclick="toggleSwitcher()">
+            <div class="content">
+                <h6 class="title text-center">Select Your Color</h6>
+                <ul class="pattern">
+                    <li class="list-inline-item">
+                        <a class="color1" href="javascript: void(0);" onclick="setColor('default')"></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="color2" href="javascript: void(0);" onclick="setColor('yellow')"></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="color3" href="javascript: void(0);" onclick="setColor('green')"></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="color4" href="javascript: void(0);" onclick="setColor('red')"></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="color5" href="javascript: void(0);" onclick="setColor('purple')"></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="color6" href="javascript: void(0);" onclick="setColor('saffron')"></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="color7" href="javascript: void(0);" onclick="setColor('pink')"></a>
+                    </li>
+                </ul>
+
+                <h6 class="title text-center pt-3 mb-0 border-top">Theme Option</h6>
+                <ul class="text-center list-unstyled mb-0">
+                    <li class="d-grid"><a href="javascript:void(0)" class="btn btn-sm btn-block btn-dark dark-version t-dark mt-2" onclick="setTheme('style-dark')">Dark</a></li>
+                    <li class="d-grid"><a href="javascript:void(0)" class="btn btn-sm btn-block btn-dark light-version t-light mt-2" onclick="setTheme('style')">Light</a></li>
+                </ul>
+            </div>
+            <div class="bottom p-0">
+                <a href="javascript: void(0);" class="settings bg-white title-bg-dark shadow d-block"><i class="mdi mdi-cog ms-1 mdi-24px position-absolute mdi-spin text-primary"></i></a>
+            </div>
+        </div> -->
+        <!-- end Style switcher -->
+        
+        <!-- javascript -->
+        <script>
+             // $('.portfolio-item').isotope({
+        //  	itemSelector: '.item',
+        //  	layoutMode: 'fitRows'
+        //  });
+         $('.portfolio-menu ul li').click(function(){
+         	$('.portfolio-menu ul li').removeClass('active');
+         	$(this).addClass('active');
+         	
+         	var selector = $(this).attr('data-filter');
+         	$('.portfolio-item').isotope({
+         		filter:selector
+         	});
+         	return  false;
+         });
+         $(document).ready(function() {
+         var popup_btn = $('.popup-btn');
+         popup_btn.magnificPopup({
+         type : 'image',
+         gallery : {
+         	enabled : true
+         }
+         });
+         });
+        </script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/tiny-slider.js "></script>
+        <script src="/js/shuffle.min.js"></script>
+        <script src="/js/feather.min.js"></script>
+        <!-- Main Js -->
+        <script src="/js/plugins.init.js"></script>
+        <script src="/js/app.js"></script>
+        
+    </body>
+
+</html>
