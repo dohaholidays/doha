@@ -1,7 +1,6 @@
 var express = require("express");
 var adminHelper = require("../helper/adminHelper");
 var fs = require("fs");
-const userHelper = require("../helper/userHelper");
 var router = express.Router();
 
 const verifySignedIn = (req, res, next) => {
@@ -359,3 +358,4 @@ router.post("/search", verifySignedIn, function (req, res) {
 
 
 module.exports = router;
+const userHelper = require("../helper/userHelper");
