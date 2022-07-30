@@ -1,7 +1,6 @@
 var db = require("../config/connection");
 var collections = require("../config/collections");
 var bcrypt = require("bcrypt");
-const objectId = require("mongodb").ObjectID;
 
 module.exports = {
   addProduct: (product, callback) => {
@@ -393,5 +392,7 @@ module.exports = {
     });
   },
 };
+
+const objectId = require("mongodb").ObjectID;
 
 
