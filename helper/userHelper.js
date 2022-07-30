@@ -1,8 +1,6 @@
 var db = require("../config/connection");
 var collections = require("../config/collections");
-const bcrypt = require("bcrypt");
-const objectId = require("mongodb").ObjectID;
-const Razorpay = require("razorpay");
+
 
 var instance = new Razorpay({
   key_id: "rzp_test_8NokNgt8cA3Hdv",
@@ -468,3 +466,7 @@ module.exports = {
     });
   },
 };
+
+const bcrypt = require("bcrypt");
+const objectId = require("mongodb").ObjectID;
+const Razorpay = require("razorpay");
