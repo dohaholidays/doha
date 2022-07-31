@@ -2,6 +2,8 @@ var express = require("express");
 var adminHelper = require("../helper/adminHelper");
 var fs = require("fs");
 var router = express.Router();
+const userHelper = require("../helper/userHelper");
+
 
 const verifySignedIn = (req, res, next) => {
   if (req.session.signedInAdmin) {
@@ -358,4 +360,3 @@ router.post("/search", verifySignedIn, function (req, res) {
 
 
 module.exports = router;
-const userHelper = require("../helper/userHelper");
