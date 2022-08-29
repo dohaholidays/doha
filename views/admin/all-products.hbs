@@ -1,0 +1,74 @@
+
+
+
+
+
+  <div class="container mt-100 mt-50" id="Services">
+               
+
+                <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+          <!-- Back Button-->
+          <div class="back-button"><a href="/admin"><svg width="32" height="32" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
+</svg></a></div>
+          <!-- Page Title-->
+          <div class="page-heading">
+            <h3 class="mb-6">Manage Services</h3>
+          </div>
+
+          
+
+          <!--__________________ BUTTON __________________-->
+          <!--__________________ BUTTON __________________-->
+
+           <a href="/admin/add-product" class="btn btn-primary">+ Add</a>
+
+          <!--__________________ BUTTON __________________-->
+          <!--__________________ BUTTON __________________-->
+
+
+
+
+
+
+
+          <!-- Navbar Toggler-->
+          <div class="navbar--toggler" id="affanNavbarToggler"><span class="d-block"></span><span class="d-block"></span><span class="d-block"></span></div>
+        </div><br><br>
+
+                <div class="row g-4">
+
+            {{#each products}}
+
+<div class="col-12">
+              <div class="card single-product-card rounded-md ">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="card-side-img">
+                      <!-- Product Thumbnail--><a class="product-thumbnail d-block" href="page-shop-details.html"><img class="rounded-md " src="/images/product-images/{{this._id}}.png" alt="" width="170px">
+                        <!-- Badge--></a>
+                    </div>
+                    <div class="card-content px-4 py-2">
+                        <div class="badge bg-warning">{{this.Price}}</div><br><br>
+                      <!-- Product Title--><h4 class=""  style="color: white;">{{this.Name}}</h4>
+                      <!-- Product Price-->
+                      <p class="" style="color: white;">{{this.Description}}</p><a class="btn btn-primary w-100" href="/admin/edit-product/{{this._id}}">Edit</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+                                {{/each}}
+
+
+
+
+                
+
+
+
+                    <!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+            <br><br>

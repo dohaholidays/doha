@@ -1,0 +1,160 @@
+
+
+  <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Doha Admin Panel</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- favicon -->
+        <link rel="shortcut icon" href="/img/logo.png">
+        <!-- Bootstrap -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/css/tiny-slider.css" rel="stylesheet" />
+        <link href="/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" rel="stylesheet">
+        <!-- Main css -->
+        <link href="/css/style-dark.css" rel="stylesheet" type="text/css" id="theme-opt" />
+        <link href="/css/colors/default.css" rel="stylesheet" id="color-opt">
+        
+
+
+
+
+        
+     
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+        
+    </head>
+    <style>
+        body {
+    color: #000000;
+    background: #ffffff;
+}
+        .portfolio-menu{
+	text-align:center;
+}
+.portfolio-menu ul li{
+	display:inline-block;
+	margin:0;
+	list-style:none;
+	padding:10px 15px;
+	cursor:pointer;
+	-webkit-transition:all 05s ease;
+	-moz-transition:all 05s ease;
+	-ms-transition:all 05s ease;
+	-o-transition:all 05s ease;
+	transition:all .5s ease;
+}
+
+
+.portfolio-item .item{
+	/*width:303px;*/
+	float:left;
+	margin-bottom:10px;
+}
+.breadcrumb {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #e9ecef00;
+    border-radius: 0.25rem;
+}
+.poss {
+left: 34px;
+
+}
+.form-control {
+    background: #f0f0f0;
+    border: 1px solid #000000;
+    color: #000000 !important;
+}
+.form-control:focus {
+    background: #e4e4e4;
+    border-color: #0080ff;
+}
+    </style>
+    <body>
+  
+  
+   <!-- Loader -->
+        <!-- <div id="preloader">
+            <div id="status">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Loader -->
+
+<header class="navbar-fixed-top" style="background-color: white;">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light" style="background-color: white;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Admin Panel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {{#if administator}}
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/admin">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/all-products">Services</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/admin/site-edit">Edit Site</a>
+                    </li>
+                     
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/all-users">Users</a>
+                    </li>
+                  
+                    {{!-- <li class="nav-item ms-3">
+                        <form class="d-flex" action="/admin/search" method="POST">
+                            <input class="form-control me-2" name="search" type="search" placeholder="Search"
+                                aria-label="Search">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </form>
+                    </li> --}}
+                </ul>
+                {{/if}}
+
+                {{#if administator}}
+                <a href="#" class="btn btn-secondary ms-3">{{administator.Name}}</a>
+                <a href="/admin/signout" onclick="return confirm('Are You Sure to Sign Out ?')" class="btn btn-outline-secondary ms-3">Sign Out</a>
+                {{else}}
+                <a href="/" class="btn btn-outline-secondary ms-3">Home</a>
+                <a href="/admin/signup" class="btn btn-secondary ms-3">Sign Up</a>
+                <a href="/admin/signin" class="btn btn-secondary ms-3">Sign In</a>
+
+                {{/if}}
+            </div>
+        </div>
+    </nav>
+</header>
+
+ <!-- javascript -->
+ 
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/feather.min.js"></script>
+        <!-- Main Js -->
+        <script src="/js/plugins.init.js"></script>
+        <script src="/js/app.js"></script>
+        
+    </body>
+
+</html>
