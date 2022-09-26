@@ -132,7 +132,7 @@ router.post("/signin", function (req, res) {
       req.session.user = response.user;
       res.redirect("/");
     } else {
-      req.session.signInErr = "Invalid Email/Password!";
+      req.session.signInErr = "Invalid Email/Password";
       res.redirect("/signin");
     }
   });
