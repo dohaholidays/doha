@@ -1,0 +1,53 @@
+<section>
+    <div class="container-lg">
+        <div class="row">
+            <div class="col-md-6"><br><br><br>
+    <div class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
+          <!-- Back Button-->
+          <div class="back-button"><a href="/admin/all-gallery"><svg width="32" height="32" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
+</svg></a></div>
+          <!-- Page Title-->
+          <div class="page-heading">
+            <h3 class="mb-6">Update gallery</h3>
+          </div>
+          <!-- Navbar Toggler-->
+          <div class="navbar--toggler" id="affanNavbarToggler"><span class="d-block"></span><span class="d-block"></span><span class="d-block"></span></div>
+        </div><br><br>   
+        
+        
+                     <form action="/admin/edit-gallery/{{gallerys._id}}" enctype="multipart/form-data" method="POST">
+                     <label for="">Name</label>
+                    <select class="form-select" name="Name" value="{{gallerys.Name}}"  aria-label="Default select example">
+                    <option value="{{gallerys.Name}}" >{{gallerys.Name}}</option>
+                    <option value="sports">Sports</option>
+                    <option value="travels">Tours And Travels</option>
+                    <option value="family"> Family Park And Convention Center</option>
+                    <option value="trading">Trading</option>
+                    <option value="contracting">Contracting</option>
+                    <option value="booking">Hotels And Resorts Booking</option>
+                    </select>
+                    
+
+                    <label for="" class=" mb-2">Image</label><br>
+                    <img src="/images/gallery-images/{{gallerys._id}}.png" alt=""
+                        style="width: 10rem; margin-bottom: 12px;" id="imgView">
+                        <br>
+                    <input type="file" name="Image" class="form-control" onchange="viewImage(event)">
+
+                    <button type="submit" class="btn btn-success mt-4">Submit</button>
+                    <a href="/admin/all-gallery" class="btn btn-danger mt-4">Cancel</a>
+                </form><br>
+            </div><br><br>
+        </div><br>
+    </div>
+</section>
+
+
+
+
+<script>
+    function viewImage(event) {
+        document.getElementById("imgView").src = URL.createObjectURL(event.target.files[0]);
+    }
+</script>

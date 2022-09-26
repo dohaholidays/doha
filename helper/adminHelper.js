@@ -1,6 +1,7 @@
 var db = require("../config/connection");
 var collections = require("../config/collections");
 var bcrypt = require("bcrypt");
+const objectId = require("mongodb").ObjectID;
 
 module.exports = {
   addProduct: (product, callback) => {
@@ -26,8 +27,7 @@ module.exports = {
     });
   },
 
-
-/// -----------HEADER SESSION --------------///
+  /// -----------HEADER SESSION --------------///
   addHeader: (header, callback) => {
     console.log(header);
     db.get()
@@ -91,7 +91,7 @@ module.exports = {
         });
     });
   },
-  
+
   deleteAllHeaders: () => {
     return new Promise((resolve, reject) => {
       db.get()
@@ -102,10 +102,206 @@ module.exports = {
         });
     });
   },
-/// -----------HEADER END --------------///
+  /// -----------HEADER END --------------///
 
+  /// -----------ABOUT SESSION --------------///
+  addAbout: (about, callback) => {
+    console.log(about);
+    db.get()
+      .collection(collections.ABOUT_COLLECTION)
+      .insertOne(about)
+      .then((data) => {
+        console.log(data);
+        callback(data.ops[0]._id);
+      });
+  },
 
-/// -----------VIDEO SESSION --------------///
+  getAllAbouts: () => {
+    return new Promise(async (resolve, reject) => {
+      let about = await db
+        .get()
+        .collection(collections.ABOUT_COLLECTION)
+        .find()
+        .toArray();
+      resolve(about);
+    });
+  },
+
+  getAboutDetails: (aboutId) => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection(collections.ABOUT_COLLECTION)
+        .findOne({ _id: objectId(aboutId) })
+        .then((response) => {
+          resolve(response);
+        });
+    });
+  },
+
+  deleteAbout: (aboutId) => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection(collections.ABOUT_COLLECTION)
+        .removeOne({ _id: objectId(aboutId) })
+        .then((response) => {
+          console.log(response);
+          resolve(response);
+        });
+    });
+  },
+
+  updateAbout: (aboutId, AboutDetails) => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection(collections.ABOUT_COLLECTION)
+        .updateOne(
+          { _id: objectId(aboutId) },
+          {
+            $set: {
+              Name: AboutDetails.Name,
+              Description: AboutDetails.Description,
+            },
+          }
+        )
+        .then((response) => {
+          resolve();
+        });
+    });
+  },
+
+  deleteAllAbout: () => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection(collections.ABOUT_COLLECTION)
+        .remove({})
+        .then(() => {
+          resolve();
+        });
+    });
+  },
+  /// -----------ABOUT END --------------///
+
+  /// -----------GALLERY SESSION --------------///
+  addGallery: (gallerys, callback) => {
+    console.log(gallerys);
+    db.get()
+      .collection(collections.GALLERY_COLLECTION)
+      .insertOne(gallerys)
+      .then((data) => {
+        console.log(data);
+        callback(data.ops[0]._id);
+      });
+  },
+
+  getAllGallery: () => {
+    return new Promise(async (resolve, reject) => {
+      let gallerys = await db
+        .get()
+        .collection(collections.GALLERY_COLLECTION)
+        .find()
+        .toArray();
+      resolve(gallerys);
+    });
+  },
+
+  getGalleryDetails: (galleryId) => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection(collections.GALLERY_COLLECTION)
+        .findOne({ _id: objectId(galleryId) })
+        .then((response) => {
+          resolve(response);
+        });
+    });
+  },
+
+  deleteGallery: (galleryId) => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection(collections.GALLERY_COLLECTION)
+        .removeOne({ _id: objectId(galleryId) })
+        .then((response) => {
+          console.log(response);
+          resolve(response);
+        });
+    });
+  },
+
+  updateGallery: (galleryId, GalleryDetails) => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection(collections.GALLERY_COLLECTION)
+        .updateOne(
+          { _id: objectId(galleryId) },
+          {
+            $set: {
+              Name: GalleryDetails.Name,
+            },
+          }
+        )
+        .then((response) => {
+          resolve();
+        });
+    });
+  },
+
+  deleteAllGallery: () => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection(collections.GALLERY_COLLECTION)
+        .remove({})
+        .then(() => {
+          resolve();
+        });
+    });
+  },
+  /// -----------GALLERY END --------------///
+
+  /// -----------Contact SESSION --------------///
+
+  getAllContact: () => {
+    return new Promise(async (resolve, reject) => {
+      let contact = await db.get().collection("contact").find().toArray();
+      resolve(contact);
+    });
+  },
+
+  getContactDetails: (contactId) => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection("contact")
+        .findOne({ _id: objectId(contactId) })
+        .then((response) => {
+          resolve(response);
+        });
+    });
+  },
+
+  deleteContact: (contactId) => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection("contact")
+        .removeOne({ _id: objectId(contactId) })
+        .then((response) => {
+          console.log(response);
+          resolve(response);
+        });
+    });
+  },
+
+  deleteAllContact: () => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection("contact")
+        .remove({})
+        .then(() => {
+          resolve();
+        });
+    });
+  },
+  /// -----------Contact END --------------///
+
+  /// -----------VIDEO SESSION --------------///
 
   addVideo: (video, callback) => {
     console.log(video);
@@ -170,7 +366,7 @@ module.exports = {
         });
     });
   },
-  
+
   deleteAllVideos: () => {
     return new Promise((resolve, reject) => {
       db.get()
@@ -181,12 +377,9 @@ module.exports = {
         });
     });
   },
-/// -----------VIDEO END --------------///
+  /// -----------VIDEO END --------------///
 
-
-
-
-/// -----------SignUp --------------///
+  /// -----------SignUp --------------///
 
   doSignup: (adminData) => {
     return new Promise(async (resolve, reject) => {
@@ -285,8 +478,6 @@ module.exports = {
     });
   },
 
-
-
   getAllUsers: () => {
     return new Promise(async (resolve, reject) => {
       let users = await db
@@ -320,63 +511,13 @@ module.exports = {
     });
   },
 
-  getAllOrders: () => {
-    return new Promise(async (resolve, reject) => {
-      let orders = await db
-        .get()
-        .collection(collections.ORDER_COLLECTION)
-        .find()
-        .toArray();
-      resolve(orders);
-    });
-  },
-
-  changeStatus: (status, orderId) => {
-    return new Promise((resolve, reject) => {
-      db.get()
-        .collection(collections.ORDER_COLLECTION)
-        .updateOne(
-          { _id: objectId(orderId) },
-          {
-            $set: {
-              "orderObject.status": status,
-            },
-          }
-        )
-        .then(() => {
-          resolve();
-        });
-    });
-  },
-
-  cancelOrder: (orderId) => {
-    return new Promise((resolve, reject) => {
-      db.get()
-        .collection(collections.ORDER_COLLECTION)
-        .removeOne({ _id: objectId(orderId) })
-        .then(() => {
-          resolve();
-        });
-    });
-  },
-
-  cancelAllOrders: () => {
-    return new Promise((resolve, reject) => {
-      db.get()
-        .collection(collections.ORDER_COLLECTION)
-        .remove({})
-        .then(() => {
-          resolve();
-        });
-    });
-  },
-
   searchProduct: (details) => {
     console.log(details);
     return new Promise(async (resolve, reject) => {
       db.get()
         .collection(collections.PRODUCTS_COLLECTION)
-        .createIndex({ Name : "text" }).then(async()=>{
+        .createIndex({ Name: "text" })
+        .then(async () => {
           let result = await db
             .get()
             .collection(collections.PRODUCTS_COLLECTION)
@@ -387,12 +528,7 @@ module.exports = {
             })
             .toArray();
           resolve(result);
-        })
-
+        });
     });
   },
 };
-
-const objectId = require("mongodb").ObjectID;
-
-

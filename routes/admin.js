@@ -15,14 +15,22 @@ const verifySignedIn = (req, res, next) => {
 router.get("/", verifySignedIn, async function (req, res, next) {
   let administator = req.session.admin;
 
-   products = await adminHelper.getAllProducts();
-   headers = await adminHelper.getAllHeaders();
-   videos = await adminHelper.getAllVideos();
+  products = await adminHelper.getAllProducts();
+  headers = await adminHelper.getAllHeaders();
+  videos = await adminHelper.getAllVideos();
+  abouts = await adminHelper.getAllAbouts();
+  gallerys = await adminHelper.getAllGallery();
 
-   res.render("admin/home", { admin: true, products,headers,videos, administator });
+  res.render("admin/home", {
+    admin: true,
+    products,
+    headers,
+    videos,
+    abouts,
+    gallerys,
+    administator,
   });
-
-
+});
 
 router.get("/all-products", verifySignedIn, function (req, res) {
   let administator = req.session.admin;
@@ -30,6 +38,13 @@ router.get("/all-products", verifySignedIn, function (req, res) {
     res.render("admin/all-products", { admin: true, products, administator });
   });
 });
+
+// router.get("/all-about", verifySignedIn, function (req, res) {
+//   let administator = req.session.admin;
+//   adminHelper.getAllAbout().then((about) => {
+//     res.render("admin/all-about", { admin: true, about, administator });
+//   });
+// });
 
 router.get("/signup", function (req, res) {
   if (req.session.signedInAdmin) {
@@ -86,7 +101,6 @@ router.get("/signout", function (req, res) {
   req.session.admin = null;
   res.redirect("/admin");
 });
-
 
 router.get("/site-edit", verifySignedIn, function (req, res) {
   let administator = req.session.admin;
@@ -148,8 +162,6 @@ router.get("/delete-all-products", verifySignedIn, function (req, res) {
 });
 
 ///----------PRODUCT END-------------------------///
-
-
 
 ///----------HEADER-------------------------///
 
@@ -213,7 +225,129 @@ router.get("/delete-all-headers", verifySignedIn, function (req, res) {
   });
 });
 
+///----------ABOUT-------------------------///
 
+router.get("/all-about", verifySignedIn, function (req, res) {
+  let administator = req.session.admin;
+  adminHelper.getAllAbouts().then((abouts) => {
+    res.render("admin/all-about", { admin: true, abouts, administator });
+  });
+});
+
+router.get("/add-about", verifySignedIn, function (req, res) {
+  let administator = req.session.admin;
+  res.render("admin/add-about", { admin: true, administator });
+});
+
+router.post("/add-about", function (req, res) {
+  adminHelper.addAbout(req.body, (id) => {
+    let image = req.files.Image;
+    image.mv("./public/images/about-images/" + id + ".png", (err, done) => {
+      if (!err) {
+        res.redirect("/admin/add-about");
+      } else {
+        console.log(err);
+      }
+    });
+  });
+});
+
+router.get("/edit-about/:id", verifySignedIn, async function (req, res) {
+  let administator = req.session.admin;
+  let aboutId = req.params.id;
+  let abouts = await adminHelper.getAboutDetails(aboutId);
+  console.log(abouts);
+  res.render("admin/edit-about", { admin: true, abouts, administator });
+});
+
+router.post("/edit-about/:id", verifySignedIn, function (req, res) {
+  let aboutId = req.params.id;
+  adminHelper.updateAbout(aboutId, req.body).then(() => {
+    if (req.files) {
+      let image = req.files.Image;
+      if (image) {
+        image.mv("./public/images/about-images/" + aboutId + ".png");
+      }
+    }
+    res.redirect("/admin/all-about");
+  });
+});
+
+router.get("/delete-about/:id", verifySignedIn, function (req, res) {
+  let aboutId = req.params.id;
+  adminHelper.deleteAbout(aboutId).then((response) => {
+    fs.unlinkSync("./public/images/about-images/" + aboutId + ".png");
+    res.redirect("/admin/all-about");
+  });
+});
+
+router.get("/delete-all-about", verifySignedIn, function (req, res) {
+  adminHelper.deleteAllAbout().then(() => {
+    res.redirect("/admin/all-about");
+  });
+});
+
+///----------GALLERY-------------------------///
+
+router.get("/all-gallery", verifySignedIn, function (req, res) {
+  let administator = req.session.admin;
+  adminHelper.getAllGallery().then((gallerys) => {
+    res.render("admin/all-gallery", { admin: true, gallerys, administator });
+  });
+});
+
+router.get("/add-gallery", verifySignedIn, function (req, res) {
+  let administator = req.session.admin;
+  res.render("admin/add-gallery", { admin: true, administator });
+});
+
+router.post("/add-gallery", function (req, res) {
+  adminHelper.addGallery(req.body, (id) => {
+    let image = req.files.Image;
+    image.mv("./public/images/gallery-images/" + id + ".png", (err, done) => {
+      if (!err) {
+        res.redirect("/admin/add-gallery");
+      } else {
+        console.log(err);
+      }
+    });
+  });
+});
+
+router.get("/edit-gallery/:id", verifySignedIn, async function (req, res) {
+  let administator = req.session.admin;
+  let galleryId = req.params.id;
+  let gallerys = await adminHelper.getGalleryDetails(galleryId);
+  console.log(gallerys);
+  res.render("admin/edit-gallery", { admin: true, gallerys, administator });
+});
+
+router.post("/edit-gallery/:id", verifySignedIn, function (req, res) {
+  let galleryId = req.params.id;
+  adminHelper.updateGallery(galleryId, req.body).then(() => {
+    if (req.files) {
+      let image = req.files.Image;
+      if (image) {
+        image.mv("./public/images/gallery-images/" + galleryId + ".png");
+      }
+    }
+    res.redirect("/admin/all-gallery");
+  });
+});
+
+router.get("/delete-gallery/:id", verifySignedIn, function (req, res) {
+  let galleryId = req.params.id;
+  adminHelper.deleteGallery(galleryId).then((response) => {
+    fs.unlinkSync("./public/images/gallery-images/" + galleryId + ".png");
+    res.redirect("/admin/all-gallery");
+  });
+});
+
+router.get("/delete-all-gallery", verifySignedIn, function (req, res) {
+  adminHelper.deleteAllGallery().then(() => {
+    res.redirect("/admin/all-gallery");
+  });
+});
 
 ///----------VIDEO-------------------------///
 
@@ -229,7 +363,7 @@ router.get("/add-video", verifySignedIn, function (req, res) {
   res.render("admin/add-video", { admin: true, administator });
 });
 
-router.post("/add-video",verifySignedIn, function (req, res) {
+router.post("/add-video", verifySignedIn, function (req, res) {
   adminHelper.addVideo(req.body, (id) => {
     let image = req.files.Image;
     image.mv("./public/images/header-images/" + id + ".png", (err, done) => {
@@ -241,7 +375,6 @@ router.post("/add-video",verifySignedIn, function (req, res) {
     });
   });
 });
-
 
 router.get("/edit-video/:id", verifySignedIn, async function (req, res) {
   let administator = req.session.admin;
@@ -264,9 +397,6 @@ router.post("/edit-video/:id", verifySignedIn, function (req, res) {
   });
 });
 
-
-
-
 router.get("/delete-video/:id", verifySignedIn, function (req, res) {
   let videoId = req.params.id;
   adminHelper.deleteVideo(videoId).then((response) => {
@@ -282,6 +412,28 @@ router.get("/delete-all-videos", verifySignedIn, function (req, res) {
 });
 ///-------------VIDEO END-------------///
 
+///-------------Contact-------------///
+
+router.get("/all-contact", verifySignedIn, function (req, res) {
+  let administator = req.session.admin;
+  adminHelper.getAllContact().then((contact) => {
+    res.render("admin/all-contact", { admin: true, administator, contact });
+  });
+});
+
+router.get("/delete-contact/:id", verifySignedIn, function (req, res) {
+  let contactId = req.params.id;
+  adminHelper.deleteContact(contactId).then((response) => {
+    res.redirect("/admin/all-contact");
+  });
+});
+
+router.get("/delete-all-contact", verifySignedIn, function (req, res) {
+  adminHelper.deleteAllContact().then(() => {
+    res.redirect("/admin/all-contact");
+  });
+});
+///-------------Contact END-------------///
 
 router.get("/all-users", verifySignedIn, function (req, res) {
   let administator = req.session.admin;
@@ -303,59 +455,12 @@ router.get("/remove-all-users", verifySignedIn, function (req, res) {
   });
 });
 
-router.get("/all-orders", verifySignedIn, async function (req, res) {
-  let administator = req.session.admin;
-  let orders = await adminHelper.getAllOrders();
-  res.render("admin/all-orders", {
-    admin: true,
-    administator,
-    orders,
-  });
-});
-
-router.get(
-  "/view-ordered-products/:id",
-  verifySignedIn,
-  async function (req, res) {
-    let administator = req.session.admin;
-    let orderId = req.params.id;
-    let products = await userHelper.getOrderProducts(orderId);
-    res.render("admin/order-products", {
-      admin: true,
-      administator,
-      products,
-    });
-  }
-);
-
-router.get("/change-status/", verifySignedIn, function (req, res) {
-  let status = req.query.status;
-  let orderId = req.query.orderId;
-  adminHelper.changeStatus(status, orderId).then(() => {
-    res.redirect("/admin/all-orders");
-  });
-});
-
-router.get("/cancel-order/:id", verifySignedIn, function (req, res) {
-  let orderId = req.params.id;
-  adminHelper.cancelOrder(orderId).then(() => {
-    res.redirect("/admin/all-orders");
-  });
-});
-
-router.get("/cancel-all-orders", verifySignedIn, function (req, res) {
-  adminHelper.cancelAllOrders().then(() => {
-    res.redirect("/admin/all-orders");
-  });
-});
-
 router.post("/search", verifySignedIn, function (req, res) {
   let administator = req.session.admin;
   adminHelper.searchProduct(req.body).then((response) => {
     res.render("admin/search-result", { admin: true, administator, response });
   });
 });
-
 
 module.exports = router;
 const userHelper = require("../helper/userHelper");
